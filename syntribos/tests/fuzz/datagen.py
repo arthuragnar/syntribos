@@ -77,7 +77,7 @@ def _build_str_combinations(fuzz_string, data):
     :param str data: Lines from the request template
     """
     # Match either "{identifier:value}" or "{value}"
-    var_regex = r"{([\w]*):?([^}]*)}"
+    var_regex = r"([\w]*):?([^}]*)"
     for match in re.finditer(var_regex, data):
         start, stop = match.span()
         model = "{0}{1}{2}".format(data[:start], fuzz_string, data[stop:])
